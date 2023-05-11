@@ -45,7 +45,72 @@
   </div>
 </header>
 <div class="login">
-  <button type="submit" class="btn" class="btnLogin-popup"><a href="login.html">Login</a></button>
+   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">Login</button>
+
+		<!-- Login Popup Modal -->
+		<div class="modal" id="loginModal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<!-- Modal Header -->
+					<div class="modal-header">
+						<h4 class="modal-title">Login</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+
+					<!-- Modal body -->
+					<div class="modal-body">
+						<form>
+							<div class="form-group">
+								<label for="username">Username:</label>
+								<input type="text" class="form-control" id="username">
+							</div>
+							<div class="form-group">
+								<label for="password">Password:</label>
+								<input type="password" class="form-control" id="password">
+							</div>
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</form>
+					</div>
+
+					<!-- Modal footer -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Include jQuery and Bootstrap JS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+	<script>
+		$(document).ready(function(){
+			// When the login form is submitted
+			$("#loginModal form").submit(function(event){
+				// Prevent the default form submission behavior
+				event.preventDefault();
+				
+				// Get the username and password values
+				var username = $("#username").val();
+				var password = $("#password").val();
+				
+				// Perform some basic validation
+				if(username === "" || password === ""){
+					alert("Please enter both a username and password.");
+				}
+				else{
+					// Log the user in (in this case, just show an alert)
+					alert("Logged in as " + username + ".");
+					
+					// Close the modal
+					$("#loginModal").modal("hide");
+				}
+			});
+		});
+	</script>
   <button type="submit" class="btn">Sign Up</button>
 </div>
     <script src="./home.js"></script>
